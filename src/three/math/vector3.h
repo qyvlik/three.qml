@@ -393,7 +393,7 @@ public:
         return *this;
     }
 
-    double dot(const Vector3& v )
+    double dot(const Vector3& v ) const
     {
         return this->x * v.x + this->y * v.y + this->z * v.z;
     }
