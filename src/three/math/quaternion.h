@@ -11,6 +11,7 @@
 namespace three {
 
 class Vector3;
+class Euler;
 
 class Quaternion
 {
@@ -54,54 +55,7 @@ public:
     }
 
     // TODO
-    //   Quaternion& setFromEuler( euler, update ) {
-    //        if ( euler instanceof THREE.Euler == false ) {
-    //            throw new Error( 'THREE.Quaternion: .setFromEuler() now expects a Euler rotation rather than a Vector3 and order.' );
-    //        }
-    //        // http://www.mathworks.com/matlabcentral/fileexchange/
-    //        // 	20696-function-to-convert-between-dcm-euler-angles-quaternions-and-euler-vectors/
-    //        //	content/SpinCalc.m
-    //        var c1 = std::cos( euler.x / 2 );
-    //        var c2 = std::cos( euler.y / 2 );
-    //        var c3 = std::cos( euler.z / 2 );
-    //        var s1 = std::sin( euler.x / 2 );
-    //        var s2 = std::sin( euler.y / 2 );
-    //        var s3 = std::sin( euler.z / 2 );
-    //        var order = euler.order;
-    //        if ( order == 'XYZ' ) {
-    //            this->x = s1 * c2 * c3 + c1 * s2 * s3;
-    //            this->y = c1 * s2 * c3 - s1 * c2 * s3;
-    //            this->z = c1 * c2 * s3 + s1 * s2 * c3;
-    //            this->w = c1 * c2 * c3 - s1 * s2 * s3;
-    //        } else if ( order == 'YXZ' ) {
-    //            this->x = s1 * c2 * c3 + c1 * s2 * s3;
-    //            this->y = c1 * s2 * c3 - s1 * c2 * s3;
-    //            this->z = c1 * c2 * s3 - s1 * s2 * c3;
-    //            this->w = c1 * c2 * c3 + s1 * s2 * s3;
-    //        } else if ( order == 'ZXY' ) {
-    //            this->x = s1 * c2 * c3 - c1 * s2 * s3;
-    //            this->y = c1 * s2 * c3 + s1 * c2 * s3;
-    //            this->z = c1 * c2 * s3 + s1 * s2 * c3;
-    //            this->w = c1 * c2 * c3 - s1 * s2 * s3;
-    //        } else if ( order == 'ZYX' ) {
-    //            this->x = s1 * c2 * c3 - c1 * s2 * s3;
-    //            this->y = c1 * s2 * c3 + s1 * c2 * s3;
-    //            this->z = c1 * c2 * s3 - s1 * s2 * c3;
-    //            this->w = c1 * c2 * c3 + s1 * s2 * s3;
-    //        } else if ( order == 'YZX' ) {
-    //            this->x = s1 * c2 * c3 + c1 * s2 * s3;
-    //            this->y = c1 * s2 * c3 + s1 * c2 * s3;
-    //            this->z = c1 * c2 * s3 - s1 * s2 * c3;
-    //            this->w = c1 * c2 * c3 - s1 * s2 * s3;
-    //        } else if ( order == 'XZY' ) {
-    //            this->x = s1 * c2 * c3 - c1 * s2 * s3;
-    //            this->y = c1 * s2 * c3 - s1 * c2 * s3;
-    //            this->z = c1 * c2 * s3 + s1 * s2 * c3;
-    //            this->w = c1 * c2 * c3 + s1 * s2 * s3;
-    //        }
-    //        if ( update != false )
-    //            return *this;
-    //    }
+    Quaternion& setFromEuler( const Euler& euler, bool update = true );
 
     Quaternion& setFromAxisAngle(const Vector3& axis,const double& angle );
 

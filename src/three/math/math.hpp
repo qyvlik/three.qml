@@ -99,7 +99,7 @@ inline double radToDeg (double radians)
     return radians * radianToDegreesFactor;
 }
 
-inline bool isPowerOfTwo ( value )
+inline bool isPowerOfTwo (int value )
 {
     return ( value & ( value - 1 ) ) == 0 && value != 0;
 }

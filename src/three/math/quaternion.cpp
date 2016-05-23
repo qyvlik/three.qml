@@ -1,15 +1,67 @@
 #include "quaternion.h"
 
+#include "euler.h"
 #include "vector3.h"
 
 namespace three {
+
+Quaternion &Quaternion::setFromEuler(const Euler &euler, bool update)
+{
+    // http://www.mathworks.com/matlabcentral/fileexchange/
+    // 	20696-function-to-convert-between-dcm-euler-angles-quaternions-and-euler-vectors/
+    //	content/SpinCalc.m
+
+    Q_UNUSED(update);
+
+    double c1 = std::cos( euler.x / 2 );
+    double c2 = std::cos( euler.y / 2 );
+    double c3 = std::cos( euler.z / 2 );
+    double s1 = std::sin( euler.x / 2 );
+    double s2 = std::sin( euler.y / 2 );
+    double s3 = std::sin( euler.z / 2 );
+    Euler::RotationOrders order = euler.order;
+
+    if ( order == Euler::XYZ ) {
+        this->x = s1 * c2 * c3 + c1 * s2 * s3;
+        this->y = c1 * s2 * c3 - s1 * c2 * s3;
+        this->z = c1 * c2 * s3 + s1 * s2 * c3;
+        this->w = c1 * c2 * c3 - s1 * s2 * s3;
+    } else if ( order == Euler::YXZ ) {
+        this->x = s1 * c2 * c3 + c1 * s2 * s3;
+        this->y = c1 * s2 * c3 - s1 * c2 * s3;
+        this->z = c1 * c2 * s3 - s1 * s2 * c3;
+        this->w = c1 * c2 * c3 + s1 * s2 * s3;
+    } else if ( order == Euler::ZXY ) {
+        this->x = s1 * c2 * c3 - c1 * s2 * s3;
+        this->y = c1 * s2 * c3 + s1 * c2 * s3;
+        this->z = c1 * c2 * s3 + s1 * s2 * c3;
+        this->w = c1 * c2 * c3 - s1 * s2 * s3;
+    } else if ( order == Euler::ZYX ) {
+        this->x = s1 * c2 * c3 - c1 * s2 * s3;
+        this->y = c1 * s2 * c3 + s1 * c2 * s3;
+        this->z = c1 * c2 * s3 - s1 * s2 * c3;
+        this->w = c1 * c2 * c3 + s1 * s2 * s3;
+    } else if ( order == Euler::YZX ) {
+        this->x = s1 * c2 * c3 + c1 * s2 * s3;
+        this->y = c1 * s2 * c3 + s1 * c2 * s3;
+        this->z = c1 * c2 * s3 - s1 * s2 * c3;
+        this->w = c1 * c2 * c3 - s1 * s2 * s3;
+    } else if ( order == Euler::XZY ) {
+        this->x = s1 * c2 * c3 - c1 * s2 * s3;
+        this->y = c1 * s2 * c3 - s1 * c2 * s3;
+        this->z = c1 * c2 * s3 + s1 * s2 * c3;
+        this->w = c1 * c2 * c3 + s1 * s2 * s3;
+    }
+    //    if ( update != false )
+    return *this;
+}
 
 Quaternion &Quaternion::setFromAxisAngle(const Vector3 &axis, const double &angle)
 {
     // http://www.euclideanspace.com/maths/geometry/rotations/conversions/angleToQuaternion/index.htm
     // assumes axis is normalized
     double halfAngle = angle / 2
-           , s = std::sin( halfAngle );
+            , s = std::sin( halfAngle );
     this->x = axis.x * s;
     this->y = axis.y * s;
     this->z = axis.z * s;

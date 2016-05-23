@@ -1,8 +1,8 @@
 #ifndef THREE_VECTOR2_H
 #define THREE_VECTOR2_H
 
-#include <QtDebug>
 #include <QtMath>
+#include <QtDebug>
 #include <QVector>
 
 namespace three {
