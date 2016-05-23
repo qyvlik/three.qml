@@ -196,19 +196,14 @@ public:
         return *this;
     }
 
-    // TODO
     Vector3& applyEuler(const Euler &euler);
 
-    // TODO
-    Vector3& applyAxisAngle (Vector3& axis, const double& angle);
+    Vector3& applyAxisAngle (const Vector3& axis, const double& angle);
 
-    // // TODO
     Vector3& applyMatrix3 (const Matrix3& m );
 
-    // TODO
     Vector3& applyMatrix4 (const Matrix4& m );
 
-    // TODO
     Vector3& applyProjection (const Matrix4& m );
 
     Vector3& applyQuaternion (const Quaternion& q );
@@ -230,7 +225,6 @@ public:
     //        return this->applyProjection( matrix );
     //    }
 
-    // TODO
     Vector3& transformDirection ( const Matrix4& m );
 
     Vector3& divide(const Vector3& v )
@@ -336,7 +330,7 @@ public:
         return this->x * v.x + this->y * v.y + this->z * v.z;
     }
 
-    double lengthSq()
+    double lengthSq() const
     {
         return this->x * this->x + this->y * this->y + this->z * this->z;
     }
@@ -424,13 +418,12 @@ public:
         return this->sub( v1.copy( normal ).multiplyScalar( 2 * this->dot( normal ) ) );
     }
 
-    // TODO
-    //    Vector3& angleTo(const Vector3& v )
-    //    {
-    //        double theta = this->dot( v ) / ( std::sqrt( this->lengthSq() * v.lengthSq() ) );
-    //        // clamp, to handle numerical problems
-    //        return std::acos( std::clamp( theta, - 1, 1 ) );
-    //    }
+    double angleTo(const Vector3& v )
+    {
+        double theta = this->dot( v ) / ( std::sqrt( this->lengthSq() * v.lengthSq() ) );
+        // clamp, to handle numerical problems
+        return std::acos( Math::clamp<double>( theta, - 1, 1 ) );
+    }
 
     double distanceTo(const Vector3& v )
     {
@@ -445,14 +438,11 @@ public:
         return dx * dx + dy * dy + dz * dz;
     }
 
-    // TODO
     Vector3& setFromMatrixPosition(const Matrix4& m );
 
-    // TODO
     Vector3& setFromMatrixScale(const Matrix4& m );
 
-    // Matrix3 or Matrix4;
-    // TODO
+    // TODO  Matrix3 or Matrix4;
     Vector3& setFromMatrixColumn( int index, const Matrix4& matrix );
 
     bool equals(const Vector3& v ) const

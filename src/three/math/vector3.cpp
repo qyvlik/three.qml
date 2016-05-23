@@ -6,7 +6,7 @@
 
 namespace three {
 
-Vector3 &Vector3::applyAxisAngle(Vector3 &axis, const double &angle)
+Vector3 &Vector3::applyAxisAngle(const Vector3 &axis, const double &angle)
 {
     Quaternion quaternion;
     this->applyQuaternion( quaternion.setFromAxisAngle(axis, angle ) );

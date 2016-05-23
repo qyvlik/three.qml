@@ -1,9 +1,15 @@
 #ifndef THREE_VECTOR4_H
 #define THREE_VECTOR4_H
 
+#include "math_forword_declar.h"
+
 #include <QtDebug>
 #include <QtMath>
 #include <QVector>
+
+#include "matrix3.h"
+#include "matrix4.h"
+#include "quaternion.h"
 
 namespace three {
 
@@ -188,19 +194,19 @@ public:
         return *this;
     }
 
-    // TODO
-    //   Vecotr4& applyMatrix4(const Matrix4& m ) {
-    //        var x = this->x;
-    //        var y = this->y;
-    //        var z = this->z;
-    //        var w = this->w;
-    //        var e = m.elements;
-    //        this->x = e[ 0 ] * x + e[ 4 ] * y + e[ 8 ] * z + e[ 12 ] * w;
-    //        this->y = e[ 1 ] * x + e[ 5 ] * y + e[ 9 ] * z + e[ 13 ] * w;
-    //        this->z = e[ 2 ] * x + e[ 6 ] * y + e[ 10 ] * z + e[ 14 ] * w;
-    //        this->w = e[ 3 ] * x + e[ 7 ] * y + e[ 11 ] * z + e[ 15 ] * w;
-    //        return *this;
-    //    }
+    Vector4& applyMatrix4(const Matrix4& m )
+    {
+        double x = this->x;
+        double y = this->y;
+        double z = this->z;
+        double w = this->w;
+        const auto& e = m.elements;
+        this->x = e[ 0 ] * x + e[ 4 ] * y + e[ 8 ] * z + e[ 12 ] * w;
+        this->y = e[ 1 ] * x + e[ 5 ] * y + e[ 9 ] * z + e[ 13 ] * w;
+        this->z = e[ 2 ] * x + e[ 6 ] * y + e[ 10 ] * z + e[ 14 ] * w;
+        this->w = e[ 3 ] * x + e[ 7 ] * y + e[ 11 ] * z + e[ 15 ] * w;
+        return *this;
+    }
 
     Vector4& divideScalar(const double& scalar )
     {
@@ -209,42 +215,49 @@ public:
     }
 
     // TODO
-    //    Vector4& setAxisAngleFromQuaternion( q ) {
-    //        // http://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToAngle/index.htm
+    Vector4& setAxisAngleFromQuaternion( const Quaternion& q )
+    {
+        // http://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToAngle/index.htm
 
-    //        // q is assumed to be normalized
-    //        this->w = 2 * std::acos( q.w );
-    //        var s = std::sqrt( 1 - q.w * q.w );
-    //        if ( s < 0.0001 ) {
-    //            this->x = 1;
-    //            this->y = 0;
-    //            this->z = 0;
-    //        } else {
+        // q is assumed to be normalized
+        this->w = 2 * std::acos( q.w );
+        double s = std::sqrt( 1 - q.w * q.w );
+        if ( s < 0.0001 ) {
+            this->x = 1;
+            this->y = 0;
+            this->z = 0;
+        } else {
 
-    //            this->x = q.x / s;
-    //            this->y = q.y / s;
-    //            this->z = q.z / s;
-    //        }
-    //        return *this;
-    //    }
+            this->x = q.x / s;
+            this->y = q.y / s;
+            this->z = q.z / s;
+        }
+        return *this;
+    }
 
-    // TODO
-    /*
-    Vector4& setAxisAngleFromRotationMatrix( m ) {
+    // TODO Matrix3 or Matrix4
+    Vector4& setAxisAngleFromRotationMatrix(const Matrix3& m ) {
 
         // http://www.euclideanspace.com/maths/geometry/rotations/conversions/matrixToAngle/index.htm
 
         // assumes the upper 3x3 of m is a pure rotation matrix (i.e, unscaled)
 
-        double angle, x, y, z,		// variables for result
+        double  angle, x, y, z,		// variables for result
                 epsilon = 0.01,		// margin to allow for rounding errors
                 epsilon2 = 0.1;		// margin to distinguish between 0 and 180 degrees
 
-        auto    te = m.elements;
+        const auto&    te = m.elements;
 
-        auto   m11 = te[ 0 ], m12 = te[ 4 ], m13 = te[ 8 ],
-                m21 = te[ 1 ], m22 = te[ 5 ], m23 = te[ 9 ],
-                m31 = te[ 2 ], m32 = te[ 6 ], m33 = te[ 10 ];
+        auto    m11 = te[ 0 ], m12 = te[ 3 ], m13 = te[ 6 ],
+                m21 = te[ 1 ], m22 = te[ 4 ], m23 = te[ 7 ],
+                m31 = te[ 2 ], m32 = te[ 5 ], m33 = te[ 8 ];
+
+        /*
+            m11 = te[ 0 ], m12 = te[ 4 ], m13 = te[ 8 ],
+            m21 = te[ 1 ], m22 = te[ 5 ], m23 = te[ 9 ],
+            m31 = te[ 2 ], m32 = te[ 6 ], m33 = te[ 10 ];
+         */
+
 
         if ( ( std::abs( m12 - m21 ) < epsilon )
              && ( std::abs( m13 - m31 ) < epsilon )
@@ -271,12 +284,12 @@ public:
 
             angle = M_PI;
 
-            var xx = ( m11 + 1 ) / 2;
-            var yy = ( m22 + 1 ) / 2;
-            var zz = ( m33 + 1 ) / 2;
-            var xy = ( m12 + m21 ) / 4;
-            var xz = ( m13 + m31 ) / 4;
-            var yz = ( m23 + m32 ) / 4;
+            double xx = ( m11 + 1 ) / 2;
+            double yy = ( m22 + 1 ) / 2;
+            double zz = ( m33 + 1 ) / 2;
+            double xy = ( m12 + m21 ) / 4;
+            double xz = ( m13 + m31 ) / 4;
+            double yz = ( m23 + m32 ) / 4;
 
             if ( ( xx > yy ) && ( xx > zz ) ) {
 
@@ -342,7 +355,7 @@ public:
 
         // as we have reached here there are no singularities so we can handle normally
 
-        var s = std::sqrt( ( m32 - m23 ) * ( m32 - m23 )
+        double s = std::sqrt( ( m32 - m23 ) * ( m32 - m23 )
                            + ( m13 - m31 ) * ( m13 - m31 )
                            + ( m21 - m12 ) * ( m21 - m12 ) ); // used to normalize
 
@@ -359,7 +372,7 @@ public:
         return *this;
 
     }
-    */
+
 
     Vector4& min(const Vector4& v )
     {

@@ -9,7 +9,7 @@ namespace three {
 namespace Math {
 
 
-static QString generateUUID()
+/*static*/ inline QString generateUUID()
 {
     return QUuid::createUuid().toString();
 }

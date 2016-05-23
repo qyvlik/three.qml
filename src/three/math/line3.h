@@ -108,7 +108,6 @@ public:
 private:
     Vector3 start;
     Vector3 end;
-
 };
 
 } // namespace three
