@@ -380,19 +380,20 @@ public:
         return *this;
     }
 
-    // TODO
-    //    Vector3Array applyToVector3Array( Float32Array & array, int offset = 0, int length = 0)
-    //    {
-    //        Vector3 v1;
-    //        if ( length == 0 )
-    //            length = array.size();
-    //        for ( int i = 0, j = offset; i < length; i += 3, j += 3 ) {
-    //            v1.fromArray( array, j );
-    //            v1.applyMatrix4( this );
-    //            v1.toArray( array, j );
-    //        }
-    //        return array;
-    //    }
+    // TODO Vector3Array or Float32Array
+    Float32Array& applyToVector3Array( Float32Array & array, int offset = 0, int length = 0)
+    {
+        Vector3 v1;
+        if ( length == 0 )
+            length = array.size();
+        for ( int i = 0, j = offset; i < length; i += 3, j += 3 ) {
+            v1.fromArray( array, j );
+            v1.applyMatrix4( *this );
+            v1.toArray( array, j );
+        }
+
+        return array;
+    }
 
     // TODO
     //    applyToBuffer( buffer, int offset = 0, int length = 0 ) {
@@ -719,7 +720,6 @@ public:
         matrix.elements[ 9 ] *= invSZ;
         matrix.elements[ 10 ] *= invSZ;
 
-        // TODO
         quaternion.setFromRotationMatrix( matrix );
 
         scale.x = sx;

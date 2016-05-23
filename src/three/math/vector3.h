@@ -4,11 +4,13 @@
 #include <QtDebug>
 
 #include <QVector>
+
 #include "math_forword_declar.h"
 #include "math.hpp"
 
 namespace three {
 
+class Matrix3;
 class Quaternion;
 
 class Vector3
@@ -201,17 +203,7 @@ public:
     Vector3& applyAxisAngle (Vector3& axis, const double& angle);
 
     // // TODO
-    //    Vector3& applyMatrix3 (const Matrix3& m )
-    //    {
-    //        double x = this->x;
-    //        double y = this->y;
-    //        double z = this->z;
-    //        var e = m.elements;
-    //        this->x = e[ 0 ] * x + e[ 3 ] * y + e[ 6 ] * z;
-    //        this->y = e[ 1 ] * x + e[ 4 ] * y + e[ 7 ] * z;
-    //        this->z = e[ 2 ] * x + e[ 5 ] * y + e[ 8 ] * z;
-    //        return *this;
-    //    }
+    Vector3& applyMatrix3 (const Matrix3& m );
 
     // TODO
     Vector3& applyMatrix4 (const Matrix4& m );
@@ -454,35 +446,14 @@ public:
     }
 
     // TODO
-    //    Vector3& setFromMatrixPosition( m )
-    //    {
-    //        this->x = m.elements[ 12 ];
-    //        this->y = m.elements[ 13 ];
-    //        this->z = m.elements[ 14 ];
-    //        return *this;
-    //    }
+    Vector3& setFromMatrixPosition(const Matrix4& m );
 
     // TODO
-    //    Vector3& setFromMatrixScale( m ) {
-    //        var sx = this->set( m.elements[ 0 ], m.elements[ 1 ], m.elements[ 2 ] ).length();
-    //        var sy = this->set( m.elements[ 4 ], m.elements[ 5 ], m.elements[ 6 ] ).length();
-    //        var sz = this->set( m.elements[ 8 ], m.elements[ 9 ], m.elements[ 10 ] ).length();
-    //        this->x = sx;
-    //        this->y = sy;
-    //        this->z = sz;
-    //        return *this;
-    //    }
+    Vector3& setFromMatrixScale(const Matrix4& m );
 
+    // Matrix3 or Matrix4;
     // TODO
-    //    Vector3& setFromMatrixColumn( index, matrix ) {
-    //        var offset = index * 4;
-    //        var me = matrix.elements;
-
-    //        this->x = me[ offset ];
-    //        this->y = me[ offset + 1 ];
-    //        this->z = me[ offset + 2 ];
-    //        return *this;
-    //    }
+    Vector3& setFromMatrixColumn( int index, const Matrix4& matrix );
 
     bool equals( const  Vector3& v )
     {

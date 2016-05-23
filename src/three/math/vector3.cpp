@@ -1,5 +1,6 @@
 #include "vector3.h"
 
+#include "matrix3.h"
 #include "matrix4.h"
 #include "quaternion.h"
 
@@ -9,6 +10,18 @@ Vector3 &Vector3::applyAxisAngle(Vector3 &axis, const double &angle)
 {
     Quaternion quaternion;
     this->applyQuaternion( quaternion.setFromAxisAngle(axis, angle ) );
+    return *this;
+}
+
+Vector3 &Vector3::applyMatrix3(const Matrix3 &m)
+{
+    double x = this->x;
+    double y = this->y;
+    double z = this->z;
+    const auto& e = m.elements;
+    this->x = e[ 0 ] * x + e[ 3 ] * y + e[ 6 ] * z;
+    this->y = e[ 1 ] * x + e[ 4 ] * y + e[ 7 ] * z;
+    this->z = e[ 2 ] * x + e[ 5 ] * y + e[ 8 ] * z;
     return *this;
 }
 
@@ -64,6 +77,34 @@ Vector3 &Vector3::transformDirection(const Matrix4 &m)
     this->y = e[ 1 ] * x + e[ 5 ] * y + e[ 9 ]  * z;
     this->z = e[ 2 ] * x + e[ 6 ] * y + e[ 10 ] * z;
     this->normalize();
+    return *this;
+}
+
+Vector3 &Vector3::setFromMatrixPosition(const Matrix4 &m)
+{
+    this->x = m.elements[ 12 ];
+    this->y = m.elements[ 13 ];
+    this->z = m.elements[ 14 ];
+    return *this;
+}
+
+Vector3 &Vector3::setFromMatrixScale(const Matrix4 &m) {
+    double sx = this->set( m.elements[ 0 ], m.elements[ 1 ], m.elements[ 2 ] ).length();
+    double sy = this->set( m.elements[ 4 ], m.elements[ 5 ], m.elements[ 6 ] ).length();
+    double sz = this->set( m.elements[ 8 ], m.elements[ 9 ], m.elements[ 10 ] ).length();
+    this->x = sx;
+    this->y = sy;
+    this->z = sz;
+    return *this;
+}
+
+Vector3 &Vector3::setFromMatrixColumn(int index, const Matrix4 &matrix) {
+    int offset = index * 4;
+    const auto& me = matrix.elements;
+
+    this->x = me[ offset ];
+    this->y = me[ offset + 1 ];
+    this->z = me[ offset + 2 ];
     return *this;
 }
 
