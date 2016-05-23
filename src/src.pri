@@ -11,7 +11,8 @@ HEADERS += \
     $$PWD/three/math/math_forword_declar.h \
     $$PWD/three/math/matrix4.h \
     $$PWD/three/math/matrix3.h \
-    $$PWD/three/math/line3.h
+    $$PWD/three/math/line3.h \
+    $$PWD/three/math/triangle.h
 
 SOURCES += \
     $$PWD/three/math/vector2.cpp \
@@ -21,4 +22,5 @@ SOURCES += \
     $$PWD/three/math/euler.cpp \
     $$PWD/three/math/matrix4.cpp \
     $$PWD/three/math/matrix3.cpp \
-    $$PWD/three/math/line3.cpp
+    $$PWD/three/math/line3.cpp \
+    $$PWD/three/math/triangle.cpp
