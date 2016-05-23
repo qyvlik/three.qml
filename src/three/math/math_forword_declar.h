@@ -14,6 +14,8 @@ class Vector4;
 class Matrix3;
 class Matrix4;
 
+class Line3;
+
 typedef QVector<double> Float32Array;
 typedef QVector<Vector3> Vector3Array;
 

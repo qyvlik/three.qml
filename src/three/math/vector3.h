@@ -437,7 +437,7 @@ public:
         return std::sqrt( this->distanceToSquared( v ) );
     }
 
-    double distanceToSquared(const Vector3& v )
+    double distanceToSquared(const Vector3& v ) const
     {
         double dx = this->x - v.x;
         double dy = this->y - v.y;
@@ -455,7 +455,7 @@ public:
     // TODO
     Vector3& setFromMatrixColumn( int index, const Matrix4& matrix );
 
-    bool equals( const  Vector3& v )
+    bool equals(const Vector3& v ) const
     {
         return ( ( v.x == this->x ) && ( v.y == this->y ) && ( v.z == this->z ) );
     }

@@ -468,7 +468,7 @@ public:
 
     }
 
-    Matrix4&  transpose()
+    Matrix4& transpose()
     {
         auto& te = this->elements;
         double tmp;
