@@ -361,14 +361,15 @@ public:
         return NumberArray { this->x, this->y };
     }
 
-//    Vector2& fromAttribute ( attribute, index, offset = 0)
-//    {
-//        index = index * attribute.itemSize + offset;
+    // TODO
+    //    Vector2& fromAttribute ( attribute, index, offset = 0)
+    //    {
+    //        index = index * attribute.itemSize + offset;
 
-//        this->x = attribute.array[ index ];
-//        this->y = attribute.array[ index + 1 ];
-//        return *this;
-//    }
+    //        this->x = attribute.array[ index ];
+    //        this->y = attribute.array[ index + 1 ];
+    //        return *this;
+    //    }
 
     Vector2& rotateAround (const Vector2& center, const double& angle ) {
         double c = std::cos( angle ), s = std::sin( angle );
@@ -380,7 +381,7 @@ public:
         return *this;
     }
 
-private:
+    // private:
     double x;
     double y;
 };
