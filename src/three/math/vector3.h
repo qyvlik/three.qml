@@ -7,6 +7,8 @@
 
 namespace three {
 
+class Quaternion;
+
 class Vector3
 {
 public:
@@ -190,21 +192,11 @@ public:
         return *this;
     }
 
-    // // TODO
-    //    Vector3& applyEuler (const Quaternion& euler)
-    //    {
-    //        Quaternion quaternion;
-    //        this->applyQuaternion( quaternion.setFromEuler( euler ) );
-    //        return *this;
-    //    }
+    // TODO
+    //  Vector3& applyEuler(const Quaternion& euler);
 
-    // // TODO
-    //    Vector3& applyAxisAngle (const Quaternion& axis, const Quaternion& angle)
-    //    {
-    //        Quaternion quaternion;
-    //        this->applyQuaternion( quaternion.setFromAxisAngle( axis, angle ) );
-    //        return *this;
-    //    }
+     // TODO
+        Vector3& applyAxisAngle (Vector3& axis, const double& angle);
 
     // // TODO
     //    Vector3& applyMatrix3 (const Matrix3& m )
@@ -245,26 +237,7 @@ public:
     //    }
 
     // // TODO
-    //    Vector3& applyQuaternion (const Quaternion& q )
-    //    {
-    //        var x = this->x;
-    //        var y = this->y;
-    //        var z = this->z;
-    //        var qx = q.x;
-    //        var qy = q.y;
-    //        var qz = q.z;
-    //        var qw = q.w;
-    //        // calculate quat * vector
-    //        var ix =  qw * x + qy * z - qz * y;
-    //        var iy =  qw * y + qz * x - qx * z;
-    //        var iz =  qw * z + qx * y - qy * x;
-    //        var iw = - qx * x - qy * y - qz * z;
-    //        // calculate result * inverse quat
-    //        this->x = ix * qw + iw * - qx + iy * - qz - iz * - qy;
-    //        this->y = iy * qw + iw * - qy + iz * - qx - ix * - qz;
-    //        this->z = iz * qw + iw * - qz + ix * - qy - iy * - qx;
-    //        return *this;
-    //    }
+        Vector3& applyQuaternion (const Quaternion& q );
 
     // // TODO
     //    Vector3& project (camera)
