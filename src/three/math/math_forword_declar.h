@@ -15,7 +15,6 @@ class Matrix3;
 class Matrix4;
 
 class Line3;
-class Plane;
 class Triangle;
 class Spline;
 class Plane;
@@ -27,6 +26,7 @@ class Sphere;
 typedef QVector<double> Float32Array;
 typedef QVector<Vector2> Vector2Array;
 typedef QVector<Vector3> Vector3Array;
+typedef QVector<Plane> PlaneArray;
 
 
 
