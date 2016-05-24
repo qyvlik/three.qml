@@ -69,7 +69,7 @@ public:
 
     Euler& setFromVector3( const Vector3&v, RotationOrders order );
 
-    // TODO
+    void reorder(RotationOrders newOrder);
 
     bool equals( const Euler& euler ) const
     {

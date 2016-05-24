@@ -18,7 +18,8 @@ HEADERS += \
     $$PWD/three/math/box2.h \
     $$PWD/three/math/box3.h \
     $$PWD/three/math/frustum.h \
-    $$PWD/three/math/sphere.h
+    $$PWD/three/math/sphere.h \
+    $$PWD/three/math/ray.h
 
 SOURCES += \
     $$PWD/three/math/vector2.cpp \
@@ -35,4 +36,5 @@ SOURCES += \
     $$PWD/three/math/box2.cpp \
     $$PWD/three/math/box3.cpp \
     $$PWD/three/math/frustum.cpp \
-    $$PWD/three/math/sphere.cpp
+    $$PWD/three/math/sphere.cpp \
+    $$PWD/three/math/ray.cpp
