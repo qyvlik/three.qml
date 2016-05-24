@@ -19,9 +19,12 @@ class Plane;
 class Triangle;
 class Spline;
 class Plane;
+class Box2;
+
 class Sphere;
 
 typedef QVector<double> Float32Array;
+typedef QVector<Vector2> Vector2Array;
 typedef QVector<Vector3> Vector3Array;
 
 

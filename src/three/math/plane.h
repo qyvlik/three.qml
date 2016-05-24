@@ -149,10 +149,12 @@ public:
     }
 
     // TODO
+    //    intersectsBox(const Box3& box ) {
     //        return box.intersectsPlane( this );
     //    }
 
     // TODO
+    //    intersectsSphere(const Sphere& sphere ) {
     //        return sphere.intersectsPlane( this );
     //    }
 
