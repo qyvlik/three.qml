@@ -105,7 +105,7 @@ public:
         return line.start.equals( this->start ) && line.end.equals( this->end );
     }
 
-private:
+// private:
     Vector3 start;
     Vector3 end;
 };

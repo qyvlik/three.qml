@@ -163,6 +163,7 @@ public:
 
             // realDistance = sl.chunks[ i ] - sl.chunks[ i - 1 ];
 
+            // TODO
             // assert()...
             realDistance = chunks[ i ] - chunks[ i - 1 ];
 

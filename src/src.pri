@@ -13,7 +13,8 @@ HEADERS += \
     $$PWD/three/math/matrix3.h \
     $$PWD/three/math/line3.h \
     $$PWD/three/math/triangle.h \
-    $$PWD/three/math/spline.h
+    $$PWD/three/math/spline.h \
+    $$PWD/three/math/plane.h
 
 SOURCES += \
     $$PWD/three/math/vector2.cpp \
@@ -25,4 +26,5 @@ SOURCES += \
     $$PWD/three/math/matrix3.cpp \
     $$PWD/three/math/line3.cpp \
     $$PWD/three/math/triangle.cpp \
-    $$PWD/three/math/spline.cpp
+    $$PWD/three/math/spline.cpp \
+    $$PWD/three/math/plane.cpp

@@ -11,3 +11,9 @@
 [可以在 QtQuick 上使用的 three.js](https://github.com/tronlec/three.js/)
 
 [three.js 源码注释](https://github.com/omni360/three.js.sourcecode)
+
+---
+
+移植步骤为：
+
+maths/math.js --> maths/math.hpp
