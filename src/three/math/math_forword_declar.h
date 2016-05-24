@@ -17,6 +17,7 @@ class Matrix4;
 class Line3;
 class Plane;
 class Triangle;
+class Spline;
 
 typedef QVector<double> Float32Array;
 typedef QVector<Vector3> Vector3Array;
