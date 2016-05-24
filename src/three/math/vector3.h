@@ -425,7 +425,7 @@ public:
         return std::acos( Math::clamp<double>( theta, - 1, 1 ) );
     }
 
-    double distanceTo(const Vector3& v )
+    double distanceTo(const Vector3& v ) const
     {
         return std::sqrt( this->distanceToSquared( v ) );
     }

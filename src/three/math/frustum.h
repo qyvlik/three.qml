@@ -6,6 +6,7 @@
 #include "box3.h"
 #include "plane.h"
 #include "matrix4.h"
+#include "sphere.h"
 
 namespace three {
 
@@ -81,22 +82,19 @@ public:
     //    }
 
     // TODO
-    //    bool intersectsSphere( const Sphere& sphere )
-    //    {
-    //        auto& planes = this->planes;
-    //        auto center = sphere.center;
-    //        auto negRadius = - sphere.radius;
-
-    //        for ( int i = 0; i < 6; i ++ ) {
-
-    //            auto distance = planes[ i ].distanceToPoint( center );
-
-    //            if ( distance < negRadius ) {
-    //                return false;
-    //            }
-    //        }
-    //        return true;
-    //    }
+    bool intersectsSphere( const Sphere& sphere ) const
+    {
+        const auto& planes = this->planes;
+        const Vector3&  center = sphere.center;
+        double negRadius = - sphere.radius;
+        for ( int i = 0; i < 6; i ++ ) {
+            auto distance = planes[ i ].distanceToPoint( center );
+            if ( distance < negRadius ) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     bool intersectsBox( const Box3& box ) const
     {

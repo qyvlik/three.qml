@@ -581,9 +581,9 @@ public:
         return *this;
     }
 
-    double getMaxScaleOnAxis()
+    double getMaxScaleOnAxis() const
     {
-        auto& te = this->elements;
+        const auto& te = this->elements;
 
         double scaleXSq = te[ 0 ] * te[ 0 ] + te[ 1 ] * te[ 1 ] + te[ 2 ] * te[ 2 ];
         double scaleYSq = te[ 4 ] * te[ 4 ] + te[ 5 ] * te[ 5 ] + te[ 6 ] * te[ 6 ];

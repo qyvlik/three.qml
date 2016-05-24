@@ -96,11 +96,7 @@ public:
         return this->normal.dot( point ) + this->constant;
     }
 
-    // TODO
-    //    double distanceToSphere( const Sphere& sphere )
-    //    {
-    //        return this->distanceToPoint( sphere.center ) - sphere.radius;
-    //    }
+    double distanceToSphere( const Sphere& sphere ) const;
 
     Vector3 projectPoint(const Vector3& point, Vector3& optionalTarget )
     {
@@ -150,13 +146,9 @@ public:
         return ( startSign < 0 && endSign > 0 ) || ( endSign < 0 && startSign > 0 );
     }
 
-    // TODO
-    bool intersectsBox(const Box3& box );
+    bool intersectsBox(const Box3& box ) const;
 
-    // TODO
-    //    intersectsSphere(const Sphere& sphere ) {
-    //        return sphere.intersectsPlane( this );
-    //    }
+    bool intersectsSphere(const Sphere& sphere ) const;
 
     Vector3 coplanarPoint(Vector3& optionalTarget ) const
     {

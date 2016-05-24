@@ -20,7 +20,7 @@ class Spline;
 class Plane;
 class Box2;
 class Box3;
-
+class Frustum;
 class Sphere;
 
 typedef QVector<double> Float32Array;

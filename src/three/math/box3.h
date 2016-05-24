@@ -237,15 +237,7 @@ public:
     }
 
     // TODO
-    //    bool intersectsSphere(const Sphere& sphere )
-    //    {
-    //        Vector3 closestPoint;
-    //        // Find the point on the AABB closest to the sphere center.
-    //        this->clampPoint( sphere.center, closestPoint );
-
-    //        // If that point is inside the sphere, the AABB and sphere intersect.
-    //        return closestPoint.distanceToSquared( sphere.center ) <= ( sphere.radius * sphere.radius );
-    //    }
+    bool intersectsSphere(const Sphere& sphere ) const ;
 
     bool intersectsPlane( const Plane& plane ) const
     {
@@ -307,15 +299,7 @@ public:
     }
 
     // TODO
-    //    Sphere getBoundingSphere(Sphere& optionalTarget ) const
-    //    {
-    //        Vector3 v1 ;
-    //        Sphere&  result = optionalTarget ;
-
-    //        result.center = this->center();
-    //        result.radius = this->size( v1 ).length() * 0.5;
-    //        return result;
-    //    }
+        Sphere getBoundingSphere(Sphere& optionalTarget ) const;
 
     Box3& intersect( const Box3& box )
     {
