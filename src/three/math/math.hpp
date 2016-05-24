@@ -1,6 +1,7 @@
 #ifndef MATH_HPP
 #define MATH_HPP
 
+#include <limits>
 #include <QString>
 #include <QtMath>
 #include <QUuid>

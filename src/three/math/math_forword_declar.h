@@ -20,6 +20,7 @@ class Triangle;
 class Spline;
 class Plane;
 class Box2;
+class Box3;
 
 class Sphere;
 
