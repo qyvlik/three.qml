@@ -4,8 +4,11 @@
 #include "math_forword_declar.h"
 #include "math.hpp"
 #include "vector3.h"
+#include "plane.h"
 
 namespace three {
+
+class Plane;
 
 class Triangle
 {
@@ -145,11 +148,17 @@ public:
         return Triangle::normal( this->a, this->b, this->c, t);
     }
 
-    // TODO
-    //    plane( optionalTarget ) {
-    //        Plane result = optionalTarget || new THREE.Plane();
-    //        return result.setFromCoplanarPoints( this->a, this->b, this->c );
-    //    }
+    Plane plane( Plane& optionalTarget) const
+    {
+        Plane&  result = optionalTarget;
+        return result.setFromCoplanarPoints( this->a, this->b, this->c );
+    }
+
+    Plane plane() const
+    {
+        Plane result;
+        return result.setFromCoplanarPoints( this->a, this->b, this->c );
+    }
 
     Vector3 barycoordFromPoint(const Vector3& point ) const
     {

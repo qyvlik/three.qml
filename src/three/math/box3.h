@@ -236,7 +236,6 @@ public:
         return true;
     }
 
-    // TODO
     bool intersectsSphere(const Sphere& sphere ) const ;
 
     bool intersectsPlane( const Plane& plane ) const
@@ -298,8 +297,7 @@ public:
         return clampedPoint.sub( point ).length();
     }
 
-    // TODO
-        Sphere getBoundingSphere(Sphere& optionalTarget ) const;
+    Sphere getBoundingSphere(Sphere& optionalTarget ) const;
 
     Box3& intersect( const Box3& box )
     {

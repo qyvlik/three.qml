@@ -81,7 +81,6 @@ public:
     //        return this->intersectsSphere( sphere );
     //    }
 
-    // TODO
     bool intersectsSphere( const Sphere& sphere ) const
     {
         const auto& planes = this->planes;

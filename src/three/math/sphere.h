@@ -35,7 +35,6 @@ public:
         return *this;
     }
 
-    // TODO
     Sphere& setFromPoints(const Vector3Array& points)
     {
         Box3 box;
@@ -51,7 +50,6 @@ public:
         return *this;
     }
 
-    // TODO
     Sphere& setFromPoints(const Vector3Array& points, const Vector3& optionalCenter )
     {
         Vector3& center = this->center;

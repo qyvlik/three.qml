@@ -214,7 +214,6 @@ public:
         return this->multiplyScalar( 1 / scalar );
     }
 
-    // TODO
     Vector4& setAxisAngleFromQuaternion( const Quaternion& q )
     {
         // http://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToAngle/index.htm
@@ -235,8 +234,8 @@ public:
         return *this;
     }
 
-    // TODO Matrix3 or Matrix4
-    Vector4& setAxisAngleFromRotationMatrix(const Matrix3& m ) {
+    // TODO
+    Vector4& setAxisAngleFromRotationMatrix(const Matrix4& m ) {
 
         // http://www.euclideanspace.com/maths/geometry/rotations/conversions/matrixToAngle/index.htm
 
@@ -248,15 +247,10 @@ public:
 
         const auto&    te = m.elements;
 
-        auto    m11 = te[ 0 ], m12 = te[ 3 ], m13 = te[ 6 ],
-                m21 = te[ 1 ], m22 = te[ 4 ], m23 = te[ 7 ],
-                m31 = te[ 2 ], m32 = te[ 5 ], m33 = te[ 8 ];
+        auto    m11 = te[ 0 ], m12 = te[ 4 ], m13 = te[ 8 ],
+                m21 = te[ 1 ], m22 = te[ 5 ], m23 = te[ 9 ],
+                m31 = te[ 2 ], m32 = te[ 6 ], m33 = te[ 10 ];
 
-        /*
-            m11 = te[ 0 ], m12 = te[ 4 ], m13 = te[ 8 ],
-            m21 = te[ 1 ], m22 = te[ 5 ], m23 = te[ 9 ],
-            m31 = te[ 2 ], m32 = te[ 6 ], m33 = te[ 10 ];
-         */
 
 
         if ( ( std::abs( m12 - m21 ) < epsilon )
@@ -356,8 +350,8 @@ public:
         // as we have reached here there are no singularities so we can handle normally
 
         double s = std::sqrt( ( m32 - m23 ) * ( m32 - m23 )
-                           + ( m13 - m31 ) * ( m13 - m31 )
-                           + ( m21 - m12 ) * ( m21 - m12 ) ); // used to normalize
+                              + ( m13 - m31 ) * ( m13 - m31 )
+                              + ( m21 - m12 ) * ( m21 - m12 ) ); // used to normalize
 
         if ( std::abs( s ) < 0.001 ) s = 1;
 
