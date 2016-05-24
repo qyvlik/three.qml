@@ -2,13 +2,15 @@
 #define THREE_PLANE_H
 
 #include "math_forword_declar.h"
+
 #include "vector3.h"
 #include "line3.h"
 #include "matrix3.h"
 
+
 namespace three {
 
-
+class Box3;
 class Vector3;
 class Line3;
 class Matrix3;
@@ -149,9 +151,7 @@ public:
     }
 
     // TODO
-    //    intersectsBox(const Box3& box ) {
-    //        return box.intersectsPlane( this );
-    //    }
+    bool intersectsBox(const Box3& box );
 
     // TODO
     //    intersectsSphere(const Sphere& sphere ) {
