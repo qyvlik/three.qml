@@ -20,7 +20,9 @@ HEADERS += \
     $$PWD/three/math/frustum.h \
     $$PWD/three/math/sphere.h \
     $$PWD/three/math/ray.h \
-    $$PWD/three/math/color.h
+    $$PWD/three/math/color.h \
+    $$PWD/three/core/bufferattribute.h \
+    $$PWD/three/core/face3.h
 
 SOURCES += \
     $$PWD/three/math/vector2.cpp \
@@ -39,4 +41,6 @@ SOURCES += \
     $$PWD/three/math/frustum.cpp \
     $$PWD/three/math/sphere.cpp \
     $$PWD/three/math/ray.cpp \
-    $$PWD/three/math/color.cpp
+    $$PWD/three/math/color.cpp \
+    $$PWD/three/core/bufferattribute.cpp \
+    $$PWD/three/core/face3.cpp
