@@ -526,7 +526,7 @@ public:
         return *this;
     }
 
-    Matrix4& getInverse( const Matrix4& m, double throwOnInvertible )
+    Matrix4& getInverse( const Matrix4& m, double throwOnInvertible = false )
     {
         // based on http://www.euclideanspace.com/maths/algebra/matrix/functions/inverse/fourD/index.htm
         auto& te = this->elements;

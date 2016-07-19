@@ -23,7 +23,8 @@ HEADERS += \
     $$PWD/three/math/color.h \
     $$PWD/three/core/bufferattribute.h \
     $$PWD/three/core/face3.h \
-    $$PWD/three/core/layers.h
+    $$PWD/three/core/layers.h \
+    $$PWD/three/core/object3d.h
 
 SOURCES += \
     $$PWD/three/math/vector2.cpp \
@@ -45,4 +46,5 @@ SOURCES += \
     $$PWD/three/math/color.cpp \
     $$PWD/three/core/bufferattribute.cpp \
     $$PWD/three/core/face3.cpp \
-    $$PWD/three/core/layers.cpp
+    $$PWD/three/core/layers.cpp \
+    $$PWD/three/core/object3d.cpp
